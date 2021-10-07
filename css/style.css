@@ -1,0 +1,92 @@
+.menu-btn {
+  position: fixed; /* 固定位置決め */
+  top: 8px;
+  right: 8px; /* 右寄せ */
+  display: flex;
+  height: 64px;
+  width: 64px;
+  justify-content: center; /* 左右中央寄せ */
+  align-items: center; /* 上下中央寄せ */
+  z-index: 100;
+  background-color: #3584bb;
+}
+.menu-btn span,
+.menu-btn span::before,
+.menu-btn span::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 24px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  position: absolute;
+}
+.menu-btn span::before {
+  bottom: 8px;
+}
+.menu-btn span::after {
+  top: 8px;
+}
+
+/* ボタン時タップの動作 */
+#menu-btn-check:checked ~ .menu-btn span {
+  background-color: rgba(255, 255, 255, 0);
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+  bottom: 0;
+  transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+#menu-btn-check:checked ~ .menu-content {
+  left: 0;
+}
+
+/* チェックボックスを隠す */
+#menu-btn-check {
+  display: none;
+}
+
+/* メニューの装飾 */
+.menu-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  /* 展開されるメニューの表示領域 left: 100%なので全表示領域を専有 */
+  left: 100%;
+  z-index: 80;
+  background-color: #3584bb;
+  transition: all 0.8s;
+}
+.menu-content ul {
+  padding: 72px 8px 0;
+}
+.menu-content ul li {
+  border-bottom: 1px solid #ffffff;
+  list-style: none;
+}
+.menu-content ul li a {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px 8px 0;
+  position: relative;
+}
+.menu-content ul li a::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 10px;
+  top: 16px;
+}
